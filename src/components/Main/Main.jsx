@@ -1,4 +1,5 @@
 import "./Main.css"
+import Marte from "../../assets/marte.png"
 
 function Main() {
   return (
@@ -14,6 +15,7 @@ function Main() {
         <h2 id="titulo-planetas">Conheça um pouco mais</h2>
 
         <article>
+          <img src={Marte} alt="Planeta Marte" />
           <h3>Planetas</h3>
           <p>
             Existem muitos planetas no universo, cada um com características únicas.
