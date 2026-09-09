@@ -1,0 +1,235 @@
+/* =========================================================
+   HEADER - EXPLORANDO O UNIVERSO
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   ESTRUTURA PRINCIPAL DO CABEÇALHO
+   --------------------------------------------------------- */
+
+/*
+   O Flexbox organiza o conteúdo do cabeçalho em uma coluna.
+
+   flex-direction: column;
+   - Coloca título, descrição e navegação um abaixo do outro.
+
+   align-items: center;
+   - Centraliza os elementos horizontalmente.
+
+   gap:
+   - Cria espaçamento entre os elementos sem precisar
+     utilizar várias margens.
+*/
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1rem;
+
+    /*
+       Espaçamento interno responsivo.
+       O valor em rem mantém uma proporção consistente
+       com o tamanho da fonte principal.
+    */
+    padding: 2.5rem 5%;
+
+    /*
+       Azul muito escuro inspirado no espaço.
+       O fundo escuro cria contraste com os textos claros.
+    */
+    background-color: #0f172a;
+
+    color: #f8fafc;
+
+    text-align: center;
+}
+
+
+/* ---------------------------------------------------------
+   TÍTULO PRINCIPAL
+   --------------------------------------------------------- */
+
+/*
+   clamp() permite que o título aumente ou diminua
+   proporcionalmente conforme o tamanho da tela.
+
+   1.8rem = tamanho mínimo
+   5vw    = tamanho fluido
+   3rem   = tamanho máximo
+*/
+header h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    /*
+       Limita a largura para evitar linhas muito extensas
+       em telas grandes.
+    */
+    max-width: 45rem;
+}
+
+
+/* ---------------------------------------------------------
+   TEXTO DE APRESENTAÇÃO
+   --------------------------------------------------------- */
+
+header p {
+    font-size: 1.05rem;
+
+    /*
+       Um line-height maior melhora a leitura,
+       principalmente em dispositivos móveis.
+    */
+    line-height: 1.6;
+
+    color: #cbd5e1;
+
+    max-width: 40rem;
+}
+
+
+/* ---------------------------------------------------------
+   NAVEGAÇÃO
+   --------------------------------------------------------- */
+
+header nav {
+    display: flex;
+
+    /*
+       A navegação ocupa toda a largura disponível,
+       permitindo centralizar os links.
+    */
+    width: 100%;
+
+    justify-content: center;
+}
+
+
+/* ---------------------------------------------------------
+   LISTA DA NAVEGAÇÃO
+   --------------------------------------------------------- */
+
+header nav ul {
+    display: flex;
+
+    /*
+       Permite que os links ocupem mais de uma linha
+       quando a tela for muito pequena.
+    */
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    /*
+       gap é utilizado para controlar o espaçamento
+       entre os links.
+    */
+    gap: 0.5rem 1rem;
+
+    /*
+       Remove os marcadores padrão da lista.
+    */
+    list-style: none;
+}
+
+
+/* ---------------------------------------------------------
+   LINKS
+   --------------------------------------------------------- */
+
+header nav a {
+    /*
+       inline-flex permite controlar a altura e o
+       alinhamento da área clicável.
+    */
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    /*
+       Mantém uma área de toque confortável para
+       smartphones e tablets.
+    */
+    min-height: 2.75rem;
+
+    padding: 0.65rem 1rem;
+
+    border-radius: 0.5rem;
+
+    color: #f8fafc;
+
+    /*
+       Remove o sublinhado padrão.
+    */
+    text-decoration: none;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    /*
+       Suaviza a mudança de aparência no hover.
+    */
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* ---------------------------------------------------------
+   EFEITO AO PASSAR O MOUSE
+   --------------------------------------------------------- */
+
+header nav a:hover {
+    background-color: #2563eb;
+
+    color: #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   ACESSIBILIDADE - NAVEGAÇÃO PELO TECLADO
+   --------------------------------------------------------- */
+
+/*
+   :focus-visible mostra um contorno somente quando
+   o elemento recebe foco através de uma forma que
+   necessita de indicação visual, como o teclado.
+*/
+header nav a:focus-visible {
+    outline: 3px solid #93c5fd;
+
+    outline-offset: 3px;
+}
+
+
+/* ---------------------------------------------------------
+   TABLETS
+   --------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+
+    header {
+        padding: 3.5rem 6%;
+    }
+
+    header nav ul {
+        gap: 0.75rem 1.5rem;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   DESKTOP
+   --------------------------------------------------------- */
+
+@media (min-width: 64rem) {
+
+    header {
+        padding-block: 4rem;
+    }
+}

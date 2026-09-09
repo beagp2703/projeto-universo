@@ -1,0 +1,89 @@
+/* =========================================================
+   FOOTER - EXPLORANDO O UNIVERSO
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   RODAPÉ
+   --------------------------------------------------------- */
+
+/*
+   O Flexbox organiza as informações do footer
+   verticalmente no mobile.
+*/
+footer {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    /*
+       gap controla o espaço entre os dois parágrafos.
+    */
+    gap: 0.5rem;
+
+    /*
+       Espaçamento interno responsivo.
+    */
+    padding: 2rem 5%;
+
+    /*
+       O mesmo fundo escuro do Header cria uma
+       identidade visual consistente.
+    */
+    background-color: #0f172a;
+
+    color: #f8fafc;
+
+    text-align: center;
+}
+
+
+/* ---------------------------------------------------------
+   TEXTOS
+   --------------------------------------------------------- */
+
+footer p {
+    font-size: 0.95rem;
+
+    line-height: 1.6;
+
+    /*
+       Cor clara sobre fundo escuro proporciona
+       bom contraste.
+    */
+    color: #e2e8f0;
+}
+
+
+/* ---------------------------------------------------------
+   PRIMEIRO TEXTO - DESTAQUE
+   --------------------------------------------------------- */
+
+/*
+   "Missão concluída" recebe maior destaque,
+   funcionando como uma espécie de encerramento
+   visual da página.
+*/
+footer p:first-child {
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    color: #f8fafc;
+}
+
+
+/* ---------------------------------------------------------
+   TABLET E DESKTOP
+   --------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+
+    footer {
+        padding-block: 2.5rem;
+    }
+}
