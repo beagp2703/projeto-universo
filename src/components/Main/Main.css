@@ -2,220 +2,148 @@
    MAIN - EXPLORANDO O UNIVERSO
    ========================================================= */
 
-
-/* ---------------------------------------------------------
-   CONTEÚDO PRINCIPAL
-   --------------------------------------------------------- */
-
-/*
-   O main utiliza Flexbox para organizar o conteúdo
-   verticalmente.
-
-   gap controla o espaçamento entre os elementos,
-   evitando o excesso de margin.
-*/
 main {
     display: flex;
-
     flex-direction: column;
-
     gap: 2.5rem;
 
-    /*
-       Espaçamento lateral flexível.
-       O percentual permite que o conteúdo se adapte
-       a diferentes larguras de tela.
-    */
+    /* Espaçamento horizontal fluido para diferentes telas */
     padding: 2.5rem 5%;
 
     background-color: #f8fafc;
-
     color: #1e293b;
 
-    /*
-       Garante uma largura confortável para leitura
-       em monitores maiores.
-    */
+    /* Evita que o conteúdo fique excessivamente largo */
     max-width: 80rem;
 
-    /*
-       Centraliza o conteúdo horizontalmente.
-    */
+    /* Centraliza o conteúdo em telas maiores */
     margin-inline: auto;
 }
 
-
-/* ---------------------------------------------------------
-   TÍTULOS
-   --------------------------------------------------------- */
-
-/*
-   O título principal utiliza clamp() para se adaptar
-   ao tamanho da tela.
-*/
 main h2 {
     font-size: clamp(1.5rem, 4vw, 2.25rem);
-
     line-height: 1.25;
-
     color: #1e3a8a;
-
     font-weight: 700;
 }
 
-
-/*
-   Os títulos dos cards possuem tamanho menor que
-   os títulos das seções, criando uma hierarquia visual.
-*/
 main h3 {
     font-size: 1.25rem;
-
     line-height: 1.3;
-
     color: #1e3a8a;
-
     font-weight: 700;
 }
 
-
-/* ---------------------------------------------------------
-   PARÁGRAFOS
-   --------------------------------------------------------- */
-
 main p {
-    /*
-       O espaçamento entre linhas melhora a legibilidade
-       de textos maiores.
-    */
     line-height: 1.7;
-
     font-size: 1rem;
-
     color: #334155;
 }
 
-
-/* ---------------------------------------------------------
+/* =========================================================
    SEÇÃO DE CONTEÚDO
-   --------------------------------------------------------- */
+   ========================================================= */
 
-/*
-   No celular, os elementos ficam organizados em uma
-   única coluna.
-
-   Flexbox é utilizado inicialmente porque funciona
-   muito bem para uma estrutura linear.
-*/
 main section {
     display: flex;
-
     flex-direction: column;
-
     gap: 1.25rem;
 }
 
-
-/*
-   O título da seção ocupa toda a largura disponível.
-*/
 main section > h2 {
     width: 100%;
 }
 
+/* =========================================================
+   CARDS
+   ========================================================= */
 
-/* ---------------------------------------------------------
-   CARDS DOS ARTICLES
-   --------------------------------------------------------- */
-
-/*
-   Cada article representa um card de conteúdo.
-
-   display: flex;
-   - Permite organizar título e texto verticalmente.
-
-   gap:
-   - Controla o espaço entre o título e o parágrafo.
-*/
 main article {
     display: flex;
-
     flex-direction: column;
 
+    /* O gap mantém os elementos organizados sem excesso
+       de margens individuais */
     gap: 0.75rem;
 
-    padding: 1.5rem;
-
-    /*
-       Fundo branco diferencia os cards do fundo
-       levemente acinzentado do main.
-    */
     background-color: #ffffff;
 
-    /*
-       A borda cria uma separação visual discreta.
-    */
     border: 1px solid #cbd5e1;
-
     border-radius: 0.75rem;
 
-    /*
-       Sombra suave cria profundidade sem exagero.
-    */
+    /* Evita que a imagem ultrapasse os cantos
+       arredondados do card */
+    overflow: hidden;
+
     box-shadow: 0 0.25rem 0.75rem rgb(15 23 42 / 8%);
 
-    /*
-       Permite uma pequena animação no hover.
-    */
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
 }
 
+/* =========================================================
+   IMAGENS DOS CARDS
+   ========================================================= */
 
-/* ---------------------------------------------------------
-   EFEITO HOVER DOS CARDS
-   --------------------------------------------------------- */
+main article img {
+    display: block;
 
-/*
-   Uma pequena elevação indica visualmente que o card
-   é um elemento interativo ou importante.
-*/
+    /* Faz a imagem ocupar toda a largura disponível
+       do card */
+    width: 100%;
+
+    /* Altura controlada para manter um padrão visual */
+    height: 12rem;
+
+    /* Mantém a proporção visual sem distorcer a imagem */
+    object-fit: cover;
+
+    /* Impede que a imagem fique espremida pelo Flexbox */
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   CONTEÚDO DO CARD
+   ========================================================= */
+
+/* Mantém o conteúdo textual com espaçamento interno,
+   enquanto a imagem continua ocupando toda a largura */
+main article h3,
+main article p {
+    margin-inline: 1.5rem;
+}
+
+main article h3 {
+    margin-top: 0.75rem;
+}
+
+main article p {
+    margin-bottom: 1.5rem;
+}
+
+/* =========================================================
+   INTERAÇÃO DOS CARDS
+   ========================================================= */
+
 main article:hover {
     transform: translateY(-0.2rem);
 
     box-shadow: 0 0.5rem 1.25rem rgb(15 23 42 / 12%);
 }
 
-
-/* ---------------------------------------------------------
-   ACESSIBILIDADE
-   --------------------------------------------------------- */
-
-/*
-   Caso futuramente um card contenha um link ou botão,
-   :focus-within permite destacar visualmente o card
-   quando um desses elementos receber foco.
-*/
+/* Indica visualmente quando um elemento dentro
+   do card recebe foco pelo teclado */
 main article:focus-within {
     outline: 3px solid #93c5fd;
-
     outline-offset: 3px;
 }
 
+/* =========================================================
+   TABLETS
+   ========================================================= */
 
-/* ---------------------------------------------------------
-   TABLET
-   --------------------------------------------------------- */
-
-/*
-   A partir de 48rem, o Flexbox da seção é substituído
-   por CSS Grid.
-
-   São criadas duas colunas iguais.
-*/
 @media (min-width: 48rem) {
-
     main {
         padding: 3rem 6%;
     }
@@ -223,59 +151,47 @@ main article:focus-within {
     main section {
         display: grid;
 
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+        /* Dois cards por linha em telas médias */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
 
         gap: 1.5rem;
     }
 
-    /*
-       O título da seção ocupa as duas colunas.
-    */
     main section > h2 {
         grid-column: 1 / -1;
     }
+
+    main article img {
+        height: 13rem;
+    }
 }
 
+/* =========================================================
+   DESKTOPS
+   ========================================================= */
 
-/* ---------------------------------------------------------
-   DESKTOP
-   --------------------------------------------------------- */
-
-/*
-   Em telas maiores, os três articles podem ficar
-   lado a lado.
-
-   Isso aproveita melhor o espaço horizontal disponível.
-*/
 @media (min-width: 64rem) {
-
     main {
         padding-block: 4rem;
     }
 
     main section {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
+        /* Três cards por linha em telas grandes */
+        grid-template-columns: repeat(3, minmax(0, 1fr));
 
         gap: 1.75rem;
     }
+
+    main article img {
+        height: 14rem;
+    }
 }
 
+/* =========================================================
+   ACESSIBILIDADE - REDUÇÃO DE MOVIMENTO
+   ========================================================= */
 
-/* ---------------------------------------------------------
-   PREFERÊNCIA POR MENOS MOVIMENTO
-   --------------------------------------------------------- */
-
-/*
-   Alguns usuários configuram o sistema operacional
-   para reduzir animações.
-
-   Esta regra respeita essa preferência e remove
-   o movimento do hover nesses casos.
-*/
 @media (prefers-reduced-motion: reduce) {
-
     main article {
         transition: none;
     }
